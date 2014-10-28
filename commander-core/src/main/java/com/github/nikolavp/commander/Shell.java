@@ -1,4 +1,4 @@
-package com.github.nikolavp;
+package com.github.nikolavp.commander;
 
 /*
  * #%L
@@ -21,15 +21,17 @@ package com.github.nikolavp;
  */
 
 import com.beust.jcommander.JCommander;
-import com.github.nikolavp.commands.Clear;
-import com.github.nikolavp.commands.Help;
+import com.github.nikolavp.commander.commands.Clear;
+import com.github.nikolavp.commander.commands.Help;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -59,7 +61,7 @@ public class Shell implements Runnable, ShellCommandGroup {
     private ConsoleReader consoleReader;
 
     /**
-     * Gets the internal output stream
+     * Gets the internal output stream.
      * @return the output stream
      */
     public PrintStream getOutput() {
@@ -74,8 +76,14 @@ public class Shell implements Runnable, ShellCommandGroup {
         return consoleReader;
     }
 
+    /**
+     * Main constructor.
+     * @param inputStream input stream for the console
+     * @param output output stream for the console
+     * @param prompt the prompt for the console. We are going to append ">> " for you
+     */
     public Shell(InputStream inputStream, OutputStream output, String prompt) {
-        this.output = new PrintStream(output);
+        this.output = getOutputStream(output);
         this.prompt = prompt + ">> ";
         try {
             this.consoleReader = new ConsoleReader(inputStream, output);
@@ -86,6 +94,14 @@ public class Shell implements Runnable, ShellCommandGroup {
 
         } catch (IOException e) {
             this.output.println("Couldn't open console... aborting: '" + e.getMessage() + "'");
+        }
+    }
+
+    private static PrintStream getOutputStream(OutputStream output) {
+        try {
+            return new PrintStream(output, false, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException("UTF-8 not found!?");
         }
     }
 
@@ -114,14 +130,15 @@ public class Shell implements Runnable, ShellCommandGroup {
                     public List<Object> buildCommands(JCommander jCommander) {
                         return Shell.this.buildCommands(jCommander);
                     }
-                }.execute(args);
+                }
+                .execute(args);
             } catch (IOException e) {
                 output.println("Couldn't read from terminal... trying again!");
             }
         }
     }
 
-    private void patchJCommanderConsole(final ConsoleReader consoleReader) {
+    private void patchJCommanderConsole(final ConsoleReader reader) {
         try {
             final Field console = JCommander.class.getDeclaredField("m_console");
             console.setAccessible(true);
@@ -138,9 +155,8 @@ public class Shell implements Runnable, ShellCommandGroup {
 
                 @Override
                 public char[] readPassword(boolean echoInput) {
-                    //TODO: Test this one with password parameter
                     try {
-                        return consoleReader.readLine(prompt, '*').toCharArray();
+                        return reader.readLine(prompt, '*').toCharArray();
                     } catch (IOException e) {
                         println("Couldn't read password: " + e.getMessage());
                         return null;

@@ -1,4 +1,4 @@
-package com.github.nikolavp.commands;
+package com.github.nikolavp.commander.commands;
 
 /*
  * #%L
@@ -21,9 +21,8 @@ package com.github.nikolavp.commands;
  */
 
 import com.beust.jcommander.Parameters;
-import com.github.nikolavp.Shell;
-import com.github.nikolavp.ShellCommand;
-import jline.console.ConsoleReader;
+import com.github.nikolavp.commander.Shell;
+import com.github.nikolavp.commander.ShellCommand;
 
 import java.io.IOException;
 
@@ -33,7 +32,7 @@ import java.io.IOException;
 @Parameters(commandDescription = "Clears the console screen", commandNames = "clear")
 public class Clear implements ShellCommand {
 
-    public static final String COULDN_T_CLEAR_THE_SCREEN = "Couldn't clear the screen!";
+    private static final String COULDN_T_CLEAR_THE_SCREEN = "Couldn't clear the screen!";
     private final Shell shell;
 
     /**

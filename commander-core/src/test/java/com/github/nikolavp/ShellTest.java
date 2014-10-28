@@ -21,8 +21,9 @@ package com.github.nikolavp;
  */
 
 import com.beust.jcommander.JCommander;
-import com.github.nikolavp.commands.Clear;
-import com.github.nikolavp.commands.Help;
+import com.github.nikolavp.commander.Shell;
+import com.github.nikolavp.commander.commands.Clear;
+import com.github.nikolavp.commander.commands.Help;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;

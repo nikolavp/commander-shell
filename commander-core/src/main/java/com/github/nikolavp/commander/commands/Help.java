@@ -1,4 +1,4 @@
-package com.github.nikolavp.commands;
+package com.github.nikolavp.commander.commands;
 
 /*
  * #%L
@@ -22,12 +22,12 @@ package com.github.nikolavp.commands;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameters;
-import com.github.nikolavp.ShellCommand;
+import com.github.nikolavp.commander.ShellCommand;
 
 /**
  * Shows the usage information on the console.
  * <p>
- * Note that this can be used to show information for {@link com.github.nikolavp.MultiCommand} objects too(not just the whole command stack).
+ * Note that this can be used to show information for {@link com.github.nikolavp.commander.MultiCommand} objects too(not just the whole command stack).
  * </p>
  */
 @Parameters(commandDescription = "Shows the help from all commands", commandNames = "help")

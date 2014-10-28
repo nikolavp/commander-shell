@@ -1,4 +1,4 @@
-package com.github.nikolavp;
+package com.github.nikolavp.commander;
 
 /*
  * #%L

@@ -1,4 +1,4 @@
-package com.github.nikolavp;
+package com.github.nikolavp.commander;
 
 /*
  * #%L
@@ -22,7 +22,7 @@ package com.github.nikolavp;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import com.github.nikolavp.commands.Help;
+import com.github.nikolavp.commander.commands.Help;
 import jline.console.completer.StringsCompleter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.github.nikolavp;
+package com.github.nikolavp.commander;
 
 /*
  * #%L
@@ -33,7 +33,7 @@ public interface ShellCommandGroup {
     /**
      * Builds the commands that are going to be used in this command group.
      *
-     * @param jCommander the jcommander object on which we are going to attach the commands. Some commands like the {@link com.github.nikolavp.commands.Help} command need this.
+     * @param jCommander the jcommander object on which we are going to attach the commands. Some commands like the {@link com.github.nikolavp.commander.commands.Help} command need this.
      * @return the list of commands for command group
      */
     List<Object> buildCommands(JCommander jCommander);

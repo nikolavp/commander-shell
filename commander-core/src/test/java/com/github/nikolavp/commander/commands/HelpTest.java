@@ -1,4 +1,4 @@
-package com.github.nikolavp.commands;
+package com.github.nikolavp.commander.commands;
 
 /*
  * #%L
@@ -22,8 +22,7 @@ package com.github.nikolavp.commands;
 
 import com.beust.jcommander.JCommander;
 import com.github.nikolavp.AbstractTestShell;
-import com.github.nikolavp.Shell;
-import com.github.nikolavp.ShellCommand;
+import com.github.nikolavp.commander.Shell;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;

@@ -1,4 +1,4 @@
-package com.github.nikolavp.commands;
+package com.github.nikolavp.commander.commands;
 
 /*
  * #%L
@@ -22,9 +22,9 @@ package com.github.nikolavp.commands;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameters;
-import com.github.nikolavp.MultiCommand;
-import com.github.nikolavp.Shell;
-import com.github.nikolavp.ShellCommand;
+import com.github.nikolavp.commander.MultiCommand;
+import com.github.nikolavp.commander.Shell;
+import com.github.nikolavp.commander.ShellCommand;
 
 import java.io.PrintStream;
 import java.lang.management.ClassLoadingMXBean;
