@@ -1,0 +1,13 @@
+>> help
+Usage: <main class> [options] [command] [command options]
+  Commands:
+    help      Shows the help from all commands
+      Usage: help [options]
+
+    clear      Clears the console screen
+      Usage: clear [options]
+
+
+>> clear
+[2J[1;1H>> Goodbye!
+

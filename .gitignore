@@ -1,0 +1,7 @@
+*.class
+/bin
+.idea
+*.iml
+target
+/doc/build
+/doc/.env

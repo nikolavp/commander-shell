@@ -1,0 +1,16 @@
+>> help
+Usage: <main class> [options] [command] [command options]
+  Commands:
+    clear      Clears the console screen
+      Usage: clear [options]
+
+    help      Shows the help from all commands
+      Usage: help [options]
+
+    jvm      JVM commands for managing the jvm and showing statistics
+      Usage: jvm [options]
+
+
+>> clear
+[2J[1;1H>> Goodbye!
+
