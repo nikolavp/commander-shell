@@ -177,12 +177,4 @@ public class Shell implements Runnable, ShellCommandGroup {
         commands.add(new Help(jCommander));
         return commands;
     }
-
-    /**
-     * Main starting point for the default terminal.
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        new Shell(System.in, System.out, "commander").run();
-    }
 }
