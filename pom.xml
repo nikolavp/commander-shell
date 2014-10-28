@@ -11,9 +11,9 @@
     <description>Commander shell - use a proper shell in production</description>
 
     <modules>
-        <module>commander-shell</module>
+        <module>commander-core</module>
         <module>commander-web</module>
-        <!--<module>commander-commands</module>-->
+        <module>commander-commands</module>
   </modules>
 
     <licenses>

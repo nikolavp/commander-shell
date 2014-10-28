@@ -23,7 +23,6 @@ package com.github.nikolavp;
 import com.beust.jcommander.JCommander;
 import com.github.nikolavp.commands.Clear;
 import com.github.nikolavp.commands.Help;
-import com.github.nikolavp.commands.JVM;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
@@ -160,7 +159,6 @@ public class Shell implements Runnable, ShellCommandGroup {
         ArrayList<Object> commands = new ArrayList<Object>();
         commands.add(new Clear(this));
         commands.add(new Help(jCommander));
-        commands.add(new JVM(this));
         return commands;
     }
 
