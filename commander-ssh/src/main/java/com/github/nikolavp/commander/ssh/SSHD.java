@@ -97,6 +97,7 @@ public class SSHD {
 
         try {
             sshd.start();
+            Log.info("Ssh support started on port " + port);
         } catch (IOException e) {
             Log.error("Couldn't start the ssh daemon", e);
         }

@@ -1,7 +1,7 @@
 commander-shell
 ===
 
-A Shell framework that uses the already proven and bugfree jcommander and jline. Here is how you can write your new command and use it in a custom shell
+A Shell framework that uses the already proven and bugfree [jcommander](http://jcommander.org/) and [jline](https://github.com/jline/jline2). Here is how you can write your new command and use it in a custom shell
 
 ```java
     @Parameters(commandDescription = "My new command", commandNames = "mycommand")
@@ -51,10 +51,10 @@ and here is a live session from the terminal:
 
 some things to note:
 
-1) Configuration is done with the annotations from [http://jcommander.org/](jcommander)
-2) You get some commands for free - we also ship some ready to use commands that can be used in production. Look in the commander-commands module
-3) Auto completion for commands work in the terminal
-4) Validation of commands works based on the annotations from jcommander
+1. Configuration is done with the annotations from [jcommander](http://jcommander.org/)
+1. You get some commands for free - we also ship some ready to use commands that can be used in production. Look in the commander-commands module
+1. Auto completion for commands work in the terminal
+1. Validation of commands works based on the annotations from jcommander
 
 
 Development
