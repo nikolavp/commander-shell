@@ -9,19 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <name>${project.groupId}:${project.artifactId}</name>
-    <artifactId>commander-web</artifactId>
+
+    <artifactId>commander-ssh</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>commander-ssh</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-core</artifactId>
+            <version>0.12.0</version>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>commander-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

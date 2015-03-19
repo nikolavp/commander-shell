@@ -11,10 +11,12 @@
     <description>Commander shell - use a proper shell in production</description>
 
     <modules>
-        <module>commander-shell</module>
+        <module>commander-core</module>
         <module>commander-web</module>
-        <!--<module>commander-commands</module>-->
-  </modules>
+        <module>commander-commands</module>
+        <module>commander-dist</module>
+        <module>commander-ssh</module>
+    </modules>
 
     <licenses>
         <license>
@@ -133,15 +135,15 @@
                         <packageBranchRate>${coberturaCoverageRate}</packageBranchRate>
                     </check>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>cobertura-verify</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>cobertura-verify</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>check</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
