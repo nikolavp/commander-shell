@@ -33,12 +33,12 @@ import java.io.OutputStream;
 
 /**
  * An adapter class for our commands and those in the apache mina ssh interface.
- *
  */
 class CommanderSshCommand implements Command {
     private InputStream inputStream;
     private OutputStream outputStream;
     private Thread thread;
+    private ExitCallback exitCallback;
 
     @Override
     public void setInputStream(InputStream inputStream) {
@@ -65,13 +65,23 @@ class CommanderSshCommand implements Command {
 
     @Override
     public void setExitCallback(ExitCallback exitCallback) {
-
+        this.exitCallback = exitCallback;
     }
 
     @Override
     public void start(Environment environment) throws IOException {
-        Shell commander = new Shell(inputStream, outputStream, "commander");
-        thread = new Thread(commander);
+        final Shell commander = new Shell(inputStream, outputStream, "commander");
+        thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    commander.run();
+                    exitCallback.onExit(0);
+                } catch (Exception ex) {
+                    exitCallback.onExit(1, ex.getMessage());
+                }
+            }
+        });
         thread.start();
     }
 
