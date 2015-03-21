@@ -38,6 +38,7 @@ import java.io.OutputStream;
 class CommanderSshCommand implements Command {
     private InputStream inputStream;
     private OutputStream outputStream;
+    private Thread thread;
 
     @Override
     public void setInputStream(InputStream inputStream) {
@@ -59,6 +60,7 @@ class CommanderSshCommand implements Command {
 
     @Override
     public void setErrorStream(OutputStream errorStream) {
+
     }
 
     @Override
@@ -69,11 +71,14 @@ class CommanderSshCommand implements Command {
     @Override
     public void start(Environment environment) throws IOException {
         Shell commander = new Shell(inputStream, outputStream, "commander");
-        new Thread(commander).start();
+        thread = new Thread(commander);
+        thread.start();
     }
 
     @Override
     public void destroy() {
-        // TODO Thread.stop()
+        if (thread != null) {
+            thread.stop();
+        }
     }
 }
